@@ -23,7 +23,7 @@
 			<table class="table table-hover">
 				<tr>
 					<th>Nama</th>
-					<th>Koordinat</th>
+					<th>Pengurus</th>
 					<th>Butuh Fasilitas</th>
 					<th>Jumlah Anak</th>
 					<th>Jumlah Pengurus</th>
@@ -32,13 +32,13 @@
 					<th>Email</th>
 					<th>Sosial Media</th>
 					<th>Status</th>
-					<th>Photo</th>
+					
 					<th> </th>
 				</tr>
 				@foreach($data_panti as $panti)
 				<tr>
 					<td><a href="/panti/{{$panti->id}}/profile">{{$panti->nama}}</a></td>
-					<td>{{$panti->point_obj}}</td>
+					<td>{{$panti->nik_pengurus}}</td>
 					<td>{{$panti->butuh_fasilitas}}</td>
 					<td>{{$panti->jumlah_anak}}</td>
 					<td>{{$panti->jumlah_pengurus}}</td>
@@ -47,7 +47,6 @@
 					<td>{{$panti->email}}</td>
 					<td>{{$panti->sosmed}}</td>
 					<td>{{$panti->status_id}}</td>
-					<td>{{$panti->photo}}</td>
 					<td>
 						<a href="/panti/{{$panti->id}}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit" style="font-size:24px"></i></a>
 						<a href="/panti/{{$panti->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Ingin Dihapus?') "><i class="fa fa-trash-o" style="font-size:24px"></i></a>
@@ -71,26 +70,23 @@
 				      <div class="modal-body">
 				      	<form action="/panti/create" method="POST">
 				      		{{csrf_field()}}
-				      	  <div class="form-group">
-						    <label for="exampleInputEmail1">ID</label>
-						    <input name="id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID panti-">
-						  </div>
-				      	  <div class="form-group">
-						    <label for="exampleInputEmail1">NIK User</label>
-						    <input name="nik_user" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NIK User">
-						  </div>
-						  <div class="form-group">
-						    <label for="exampleInputEmail1">NIK Pengurus</label>
-						    <input name="nik_pengurus" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NIK Pengurus">
-						  </div>
+				      	  
 						  <div class="form-group">
 						    <label for="exampleInputEmail1">Nama Panti</label>
 						    <input name="nama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Panti">
 						  </div>
 						  <div class="form-group">
-						    <label for="exampleInputEmail1">Koordinat Panti</label>
-						    <input name="point_obj" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="lat, long">
-						  </div>
+                            <label for="exampleInputEmail1">Alamat</label>
+                            <input name="alamat" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Panti">
+                          </div>
+						  <div class="form-group">
+                            <label for="exampleInputEmail1">Latitude Lokasi</label>
+                            <input name="lat_" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Latitude">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Longitude Lokasi</label>
+                            <input name="long_" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Longitude">
 
 						  <div class="form-group">
 						    <label for="exampleInputEmail1">Fasilitas</label>
@@ -103,7 +99,7 @@
 						  </div>
 
 						  <div class="form-group">
-						    <label for="exampleInputEmail1">ID Jenis Panti</label>
+						    <label for="exampleInputEmail1">Jenis Panti</label>
 						    <input name="jenispanti_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID Jenis Panti ">
 						  </div>
 
@@ -133,7 +129,7 @@
 						  </div>
 
 						  <div class="form-group">
-						    <label for="exampleInputEmail1">ID Status Panti</label>
+						    <label for="exampleInputEmail1">Status Panti</label>
 						    <input name="status_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ID Status Panti">
 						  </div>
 
@@ -153,6 +149,7 @@
 				      </div>
 				    </div>
 				  </div>
+				  
 				
 
 @endsection
